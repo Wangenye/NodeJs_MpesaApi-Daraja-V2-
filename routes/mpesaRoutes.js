@@ -5,7 +5,8 @@ const datetime = require("node-datetime");
 const {
     MpesaToken,
     RegisterUrl,
-    stkPush,
+    stkPush1,
+    stkPusher,
     checkStatus,
     stimulateStkPay,
     newPassword
@@ -110,5 +111,16 @@ router.get('/result', (req, res) => {
 router.get('/queue', (req, res) => {
     console.log(JSON.stringify(req.body))
 })
+
+
+
+const amount=1
+const phoneNumber=254726869778
+const partyA=254726869778 
+const partyB= 174379
+// const token=req.token
+router.get("/stkstpush", MpesaToken, stkPusher(partyA,partyB,phoneNumber,amount), (req, res) => {
+    res.status(200).send(res.body);
+});
 
 module.exports = router;
